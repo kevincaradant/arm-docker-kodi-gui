@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian:stretch
+FROM codingwell/rpi-raspbian-qemu
 MAINTAINER kevinosorus <kevin.caradant@gmail.com>
 RUN apt-get clean && apt-get update && apt-get install -y --no-install-recommends xserver-xorg xinit \
      fbset libraspberrypi0 alsa-base alsa-utils alsa-tools kodi xserver-xorg-legacy dbus-x11 \

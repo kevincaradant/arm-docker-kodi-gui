@@ -1,0 +1,37 @@
+version: "3.0"
+services:
+  kodi:
+    image: kevin31/arm-kodi-gui
+    restart: always
+    environment:
+      - DISPLAY
+    ports:
+      - 8080:8080
+      - 9777:9777
+    devices:
+      - /dev/snd
+      - /dev/tty0
+      - /dev/tty2
+      - /dev/fb0
+      - /dev/input
+      - /dev/vchiq 
+      - /dev/vcio:/dev/vcio
+      - /dev/vcsm:/dev/vcsm
+      - /dev/vc-mem:/dev/vc-mem
+    volumes:
+      - /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket:ro
+      - /dev/vcio:/dev/vcio:ro
+      - /dev/vcsm:/dev/vcsm:ro
+      - /dev/vc-mem:/dev/vc-mem:ro
+      - /opt/vc:/opt/vc:ro
+      - /usr/bin/tvservice:/usr/bin/tvservice:ro
+      - /dev/input:/dev/input:ro
+      - /etc/group:/etc/group:ro
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/shadow:/etc/shadow:ro
+      - /etc/sudoers.d:/etc/sudoers.d:ro
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - $DATA:/root/.kodi:rw
+      - /etc/timezone:/etc/timezone:ro
+      - /var/run/dbus:/var/run/dbus:ro
+      - /etc/localtime:/etc/localtime:ro
